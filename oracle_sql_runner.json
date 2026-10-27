@@ -1,0 +1,40 @@
+{
+  "log": {
+    "file": "/var/log/generic-sql.log"
+  },
+
+  "general": {
+    "stop_on_error": true
+  },
+
+  "queries": [
+    {
+      "name": "Export clients",
+      "type": "SELECT",
+      "file": "sql/export_clients.sql",
+      "connection_env": "CLIENTS_CONNECTION",
+      "output_file": "data/clients.csv"
+    },
+
+    {
+      "name": "Ajout historiques",
+      "type": "INSERT",
+      "file": "sql/insert_historique.sql",
+      "connection_env": "ADMIN_CONNECTION"
+    },
+
+    {
+      "name": "Mise à jour clients",
+      "type": "UPDATE",
+      "file": "sql/update_clients.sql",
+      "connection_env": "CLIENTS_CONNECTION"
+    },
+
+    {
+      "name": "Purge temporaire",
+      "type": "DELETE",
+      "file": "sql/delete_tmp.sql",
+      "connection_env": "ADMIN_CONNECTION"
+    }
+  ]
+}
